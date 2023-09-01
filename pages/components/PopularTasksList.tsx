@@ -9,10 +9,10 @@ import {
 const PopularTasksList = () => {
   return (
     <UnorderedList>
-      <ListItem>Lorem ipsum dolor sit amet</ListItem>
-      <ListItem>Consectetur adipiscing elit</ListItem>
-      <ListItem>Integer molestie lorem at massa</ListItem>
-      <ListItem>Facilisis in pretium nisl aliquet</ListItem>
+      <ListItem>POPULAR TASK</ListItem>
+      <ListItem>POPULAR TASK</ListItem>
+      <ListItem>POPULAR TASK</ListItem>
+      <ListItem>POPULAR TASK</ListItem>
     </UnorderedList>
   );
 };
