@@ -6,23 +6,27 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
-import { ethers } from "ethers";
+import { login } from "./user_management/account";
 
 const IndexPage = () => {
   return (
     <ChakraProvider>
       <Heading fontSize="2xl">NFTasker</Heading>
       <Text fontSize="2xl"></Text>
+
       <PopularTasksList />
       <NewTasksList />
-      <Button colorScheme="teal" variant="solid">
+
+      <Button colorScheme="teal" variant="solid" onClick={login}>
         Login
       </Button>
+
       <Link href="/addTask">
         <Button colorScheme="teal" variant="solid">
           Add NFTask
         </Button>
       </Link>
+
       <Link href="/about">
         <Button colorScheme="teal" variant="solid">
           About
