@@ -7,10 +7,13 @@ import { Text } from "@chakra-ui/react";
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
 import { login } from "./user_management/account";
+import ModalDialogRegister from "./components/ModalDialogRegister";
 
 const IndexPage = () => {
   return (
     <ChakraProvider>
+      <ModalDialogRegister />
+
       <Heading fontSize="2xl">NFTasker</Heading>
       <Text fontSize="2xl"></Text>
 
@@ -18,7 +21,7 @@ const IndexPage = () => {
       <NewTasksList />
 
       <Button colorScheme="teal" variant="solid" onClick={login}>
-        Login
+        MetaMask
       </Button>
 
       <Link href="/addTask">

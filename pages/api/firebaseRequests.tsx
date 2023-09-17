@@ -1,7 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { DocumentReference, getFirestore } from "firebase/firestore";
-import { collection, addDoc, deleteDoc, updateDoc, doc } from "firebase/firestore";
+import { collection, addDoc, deleteDoc, updateDoc, doc, getDocs, getDoc,
+         where, query } from "firebase/firestore";
 
 /**
  * инициализация конфига 
@@ -40,6 +41,11 @@ export const addUser = async (address: string, name: string, userId: string) => 
     })
 
     return docRef.id;
+}
+
+export const findUserByAddress = async (address: string) => {
+    const userQuery = query(collection(db, 'Users'), where('address', '==', address));
+    return await getDocs(userQuery);
 }
 
 export const deleteUser = async (id: string) => {

@@ -1,13 +1,21 @@
 import { getAccountAddress } from "../api/ethereumRequests";
-import { addUser } from '../api/firebaseRequests';
+import { addUser, findUserByAddress } from '../api/firebaseRequests';
 import { useToast } from '@chakra-ui/react'
 
 
 export const login = async () => {
     const account = await getAccountAddress();
     if (account) {
-        console.log(account);
-        addUser(account, 'name', '123');
+        const user = await findUserByAddress(account);
+        console.log(user);
+        if (user) {
+            //сменить на вид страницы на залогиненного
+            console.log('уже заходил, логин')
+        } else {
+            //показать форму для заполнения имени
+            
+            addUser(account, 'name', '1234');
+        }
     } else {
         const toast = useToast();
         return toast({
