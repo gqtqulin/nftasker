@@ -1,10 +1,11 @@
-import { getAccounts } from "../api/ethereumRequests";
+import { getAccountAddress } from "../api/ethereumRequests";
 import { useToast } from '@chakra-ui/react'
 
-export const login = () => {
-    const accounts = getAccounts();
-    if (accounts) {
-        console.log(accounts);
+
+export const login = async () => {
+    const account = await getAccountAddress();
+    if (account) {
+        console.log(account);
     } else {
         const toast = useToast();
         return toast({

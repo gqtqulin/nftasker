@@ -1,29 +1,16 @@
-import detectEthereumProvider from '@metamask/detect-provider';
+import { ethers } from "ethers";
 
-export const getProvider = async () => {
-  try {
-    const provider = detectEthereumProvider();
-    if (provider) return provider;
-    else console.log('ethereum provider not found');
-  } catch (e) {
-    console.error(e);
-  }
-};
-
-export const getAccounts = async () => {
-  const provider = getProvider();
-  if (provider) {
-    const accounts = await window.ethereum.request({ 
-      method: 'eth.requestAccounts',
-      params: [],
-    })
-      .catch((e) => {
-        if (e.code === 4001) {
-          console.log('Please connect to MetaMask.');
-        } else {
-          console.error(e);
-        }
-      })
-    return accounts;
-  } else console.log('get accounts is crushed')
-};
+export const getAccountAddress = async () => {
+  const accounts = await window.ethereum.request({
+    method: "eth_requestAccounts",
+  })
+  .catch(e => {
+    if (e.code === 4001) {
+      console.log("Please connect to MetaMask.");
+    } else {
+      console.error(e);
+    }
+  })
+  const account = accounts[0];
+  return account;
+}
